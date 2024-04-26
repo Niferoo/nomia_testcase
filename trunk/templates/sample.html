@@ -1,0 +1,18 @@
+<p>{{ template_text }}</p>
+<form method="POST" action=".">
+    {% csrf_token %}
+
+    <table>
+        {{ form.as_table }}
+    </table>
+        {% for field in form.instance.fields %}
+            <option value="{{ field.tag }}">{{ field.title }} </option>
+        {% endfor %}
+    <!-- Конец добавления поля выбора -->
+
+    <!-- Кнопка отправки формы -->
+    {% if not form.instance %}
+        <input type="submit" value="Отправить"/>
+    {% endif %}
+</form>
+{{ data }}
